@@ -1,0 +1,60 @@
+{
+  "name": "quick-note-sticky-board",
+  "version": "1.0.0",
+  "description": "Quick Note Sticky Board - Cross-platform desktop sticky notes app",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build:win": "electron-builder --win --x64",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux",
+    "build:all": "electron-builder --win --mac --linux"
+  },
+  "build": {
+    "appId": "com.jvw.quicknoteboard",
+    "productName": "Quick Note Sticky Board",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "public/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        },
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "public/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Quick Note Sticky Board"
+    },
+    "mac": {
+      "target": ["dmg", "zip"],
+      "icon": "public/icon.icns",
+      "category": "public.app-category.productivity"
+    },
+    "linux": {
+      "target": ["AppImage", "deb", "rpm"],
+      "icon": "public/icon.png",
+      "category": "Office"
+    }
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^33.3.1",
+    "electron-builder": "^25.1.8"
+  }
+}
