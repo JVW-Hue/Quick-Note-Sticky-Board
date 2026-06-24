@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quick Note Sticky Board</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="app">
+    <header class="toolbar">
+      <div class="toolbar-left">
+        <h1 class="logo">Quick Notes</h1>
+      </div>
+      <div class="toolbar-center">
+        <div class="color-picker">
+          <span class="color-label">Color:</span>
+          <div class="color-presets" id="colorPresets"></div>
+          <div class="color-divider"></div>
+          <button id="customColorBtn" class="btn-color-custom" title="Pick any color">
+            <input type="color" id="nativeColorPicker" value="#fef08a" />
+            <span class="custom-color-icon">+</span>
+          </button>
+          <button id="saveCustomColorBtn" class="btn-save-custom" title="Save this color">Save</button>
+          <button id="mixerToggleBtn" class="btn-mixer-toggle" title="Color Mixer">Mix</button>
+        </div>
+        <div class="my-colors-row" id="myColorsRow">
+          <span class="color-label">My Colors:</span>
+          <div class="my-colors-list" id="myColorsList"></div>
+          <span class="my-colors-empty" id="myColorsEmpty">Pick a color and click Save</span>
+        </div>
+      </div>
+      <div class="toolbar-right">
+        <button id="addNoteBtn" class="btn-add" title="Add Note">
+          <span class="plus-icon">+</span> New Note
+        </button>
+        <button id="clearAllBtn" class="btn-clear" title="Clear All Notes">Clear All</button>
+      </div>
+    </header>
+
+    <div id="colorMixer" class="color-mixer hidden">
+      <div class="mixer-header">
+        <span class="mixer-title">Color Mixer</span>
+        <button id="mixerCloseBtn" class="mixer-close">&times;</button>
+      </div>
+      <div class="mixer-body">
+        <div class="mixer-row">
+          <label>Color A</label>
+          <div class="mixer-preview" id="mixPreviewA" style="background:#fef08a"></div>
+          <input type="color" id="mixColorA" value="#fef08a" />
+        </div>
+        <div class="mixer-row">
+          <label>Color B</label>
+          <div class="mixer-preview" id="mixPreviewB" style="background:#bfdbfe"></div>
+          <input type="color" id="mixColorB" value="#bfdbfe" />
+        </div>
+        <div class="mixer-row mixer-slider-row">
+          <label>Blend <span id="mixPercent">50</span>%</label>
+          <input type="range" id="mixSlider" min="0" max="100" value="50" />
+        </div>
+        <div class="mixer-result-row">
+          <div class="mixer-preview mixer-result" id="mixResult" style="background:#d0e2f4"></div>
+          <button id="useMixBtn" class="btn-use-mix">Use This Color</button>
+          <button id="saveMixBtn" class="btn-save-mix">Save</button>
+        </div>
+      </div>
+      <div class="mixer-section">
+        <span class="mixer-section-header">HSL Sliders</span>
+        <div class="hsl-sliders">
+          <div class="hsl-row">
+            <label>H</label>
+            <input type="range" id="hslH" min="0" max="360" value="200" />
+            <span id="hslHVal">200</span>
+          </div>
+          <div class="hsl-row">
+            <label>S</label>
+            <input type="range" id="hslS" min="0" max="100" value="70" />
+            <span id="hslSVal">70%</span>
+          </div>
+          <div class="hsl-row">
+            <label>L</label>
+            <input type="range" id="hslL" min="0" max="100" value="80" />
+            <span id="hslLVal">80%</span>
+          </div>
+          <div class="mixer-result-row">
+            <div class="mixer-preview mixer-result" id="hslResult" style="background:#80b3e6"></div>
+            <button id="useHslBtn" class="btn-use-mix">Use This Color</button>
+            <button id="saveHslBtn" class="btn-save-mix">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main id="board" class="board">
+      <div id="emptyState" class="empty-state">
+        <div class="empty-icon">Note</div>
+        <p>No notes yet. Click <strong>"New Note"</strong> to get started!</p>
+      </div>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

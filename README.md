@@ -2,6 +2,8 @@
 
 A cross-platform desktop sticky notes app built with Electron. Create, color, drag, and organize your notes on a visual board.
 
+**[Try it on the web](https://jvw-hue.github.io/Quick-Note-Sticky-Board/)** -- no install needed.
+
 ## Features
 
 - **Drag & Drop** -- Move notes anywhere on the board
